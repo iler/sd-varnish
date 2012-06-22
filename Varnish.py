@@ -32,4 +32,10 @@ class Varnish(object):
         stats['Hit ratio'] = float(hits / requests) * 100
         stats['Miss ratio'] = float(misses / requests) * 100
         
+        # Convert body and header bytes to MB
+        body_bytes = float(stats['Total body bytes'])
+	stats['Total body MB'] = float(body_bytes / 1048576)
+	header_bytes = float(stats['Total header bytes'])
+	stats['Total header MB'] = float(header_bytes / 1048576)
+        
         return stats
