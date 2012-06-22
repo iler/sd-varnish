@@ -2,7 +2,7 @@ import subprocess
 
 from xml.etree import ElementTree
 
-class Varnish(object):
+class Varnishstat(object):
     def __init__(self, agentConfig, checksLogger, rawConfig):
         self.agentConfig = agentConfig
         self.checksLogger = checksLogger
