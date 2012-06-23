@@ -62,9 +62,10 @@ class Varnishstat(object):
         hits = float(hits_new - hits_old)
         misses = float(misses_new - misses_old)
         hits_pass = float(hits_pass_new - hits_pass_old)
+	divider = hits + misses
         if requests != 0.00:
-          stats['Hit ratio'] = float(hits / requests) * 100
-          stats['Miss ratio'] = float(misses / requests) * 100
+          stats['Hit ratio'] = float(hits / divider) * 100
+          stats['Miss ratio'] = float(misses / divider) * 100
           stats['Client requests received'] = int(requests)
           stats['Cache hits'] = int(hits)
           stats['Cache misses'] = int(misses)
