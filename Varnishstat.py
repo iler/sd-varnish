@@ -17,15 +17,15 @@ class Varnishstat(object):
         stats_xml = ElementTree.parse(varnishstat.stdout)
         
         for stat_node in stats_xml.findall('stat'):
-            label = stat_node.findtext('description')
-            value = stat_node.findtext('value')
-            stats[label] = value
+          label = stat_node.findtext('description')
+          value = stat_node.findtext('value')
+          stats[label] = value
 	
-	      # Count uptime in days
-	      uptime = float(stats['Client uptime'])
+	# Count uptime in days
+	uptime = float(stats['Client uptime'])
         stats['Client uptime'] = uptime / 86400
 
-	      requests_new = int(stats['Client requests received'])
+	requests_new = int(stats['Client requests received'])
         hits_new = int(stats['Cache hits'])
         misses_new = int(stats['Cache misses'])
         requests_old = int(0)
@@ -71,8 +71,8 @@ class Varnishstat(object):
         
         # Convert body and header bytes to MB
         body_bytes = float(stats['Total body bytes'])
-	      stats['Total body MB'] = float(body_bytes / 1048576)
-	      header_bytes = float(stats['Total header bytes'])
-	      stats['Total header MB'] = float(header_bytes / 1048576)
+	stats['Total body MB'] = float(body_bytes / 1048576)
+	header_bytes = float(stats['Total header bytes'])
+	stats['Total header MB'] = float(header_bytes / 1048576)
         
         return stats
