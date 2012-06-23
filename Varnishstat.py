@@ -32,7 +32,7 @@ class Varnishstat(object):
         requests_old = int(0)
         hits_old = int(0)
         misses_old = int(0)
-	hit_pass_old = int(0)
+	hits_pass_old = int(0)
         
         try:
           with open('/tmp/sdstats', 'r') as sfile:
