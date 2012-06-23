@@ -46,22 +46,22 @@ class Varnishstat(object):
           req = str(requests_new)
           hit = str(hits_new)
           miss = str(misses_new)
-	  pass = str(hits_pass_new)
-          sfile.write(req + '\n' + hit + '\n' + miss + '\n' + pass)
+	  hits_pass = str(hits_pass_new)
+          sfile.write(req + '\n' + hit + '\n' + miss + '\n' + hits_pass)
           sfile.close()
           
         sfile = open('/tmp/sdstats', 'w')
         req = str(requests_new)
         hit = str(hits_new)
         miss = str(misses_new)
-	pass = str(hits_pass_new)
-        sfile.write(req + '\n' + hit + '\n' + miss + '\n' + pass)
+	hits_pass = str(hits_pass_new)
+        sfile.write(req + '\n' + hit + '\n' + miss + '\n' + hits_pass)
         sfile.close()
           
         requests = float(requests_new - requests_old)
         hits = float(hits_new - hits_old)
         misses = float(misses_new - misses_old)
-        hits_pass = = float(hits_pass_new - hits_pass_old)
+        hits_pass = float(hits_pass_new - hits_pass_old)
         if requests != 0.00:
           stats['Hit ratio'] = float(hits / requests) * 100
           stats['Miss ratio'] = float(misses / requests) * 100
